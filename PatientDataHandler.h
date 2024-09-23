@@ -1,4 +1,3 @@
-// PatientDataHandler.h
 #ifndef PATIENTDATAHANDLER_H
 #define PATIENTDATAHANDLER_H
 
@@ -6,12 +5,12 @@
 #include "CSVWriter.h"
 
 class PatientDataHandler {
-public:
-    PatientDataHandler(CSVWriter* csvWriter) : csvWriter(csvWriter) {}
-    void printPatients(const Patients& patients) const;
-
 private:
-    CSVWriter* csvWriter;  // ודא שהשורה הזו קיימת
+    CSVWriter* csvWriter;
+
+public:
+    PatientDataHandler(CSVWriter* writer) : csvWriter(writer) {}
+    void printPatients(const Patients& patients) const;
 };
 
 #endif // PATIENTDATAHANDLER_H
