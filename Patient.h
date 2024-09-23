@@ -1,27 +1,26 @@
-#pragma once
 #ifndef PATIENT_H
 #define PATIENT_H
 
 #include <string>
+#include "UrgencyLevel.h"
 using namespace std;
 
 class Patient {
-private:
-    string name;
-    int age;
-    int id;
-    static int idCounter;
-    string condition;
-
 public:
-    Patient(const std::string& name, int age, string condition);
-    string getName() const;
+    Patient(const std::string& name, int age, const string& condition, UrgencyLevel::Level urgency);
+    
+    int getId() const; 
     int getAge() const;
-    int getId() const;
-    string getCondition() const;
-    void display() const;
-    string toCSV() const;
-    void saveToCSV() const;
+    std::string getName() const;
+    std::string getCondition() const;
+    UrgencyLevel::Level getUrgency() const;
+
+private:
+    int id, age;
+    static int nextId;
+    std::string name;
+    std::string condition;
+    UrgencyLevel::Level urgency;
 };
 
 #endif // PATIENT_H

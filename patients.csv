@@ -1,0 +1,7 @@
+Patient ID,Name,Condition,Age,Urgency,Wait Time
+1,James Smith,Flu,35,1,0
+2,Olivia Johnson,Broken Leg,28,1,10
+5,Jane Doe,Loss of consciousness,28,1,20
+4,Emma Davis,Seizures,35,2,30
+3,Liam Brown,Cold,41,3,40
+6,Noah Wilson,Animal or snake bites,41,3,50
