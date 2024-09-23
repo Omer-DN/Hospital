@@ -1,30 +1,26 @@
-#include "Patient.h"
-#include "EmergencyQueue.h"
-#include "Hospital.h"
 #include <iostream>
+#include "Patients.h"
+#include "PatientDataHandler.h"
+#include "CSVWriter.h"
 
-using namespace std;
 
 int main() {
-    EmergencyQueue::initializeWaitTimes();
+    Patients patients;
+    //PatientDataHandler handler;
+    CSVWriter csvWriter;
+    PatientDataHandler patientDataHandler(&csvWriter);
 
-    Hospital hospital; // יצירת מופע של בית החולים
+    patients.addPatient(Patient("James Smith",35, "Flu", UrgencyLevel::Critical));
+    patients.addPatient(Patient("Olivia Johnson",28, "Broken Leg", UrgencyLevel::Critical));
+    patients.addPatient(Patient("Liam Brown",41, "Cold", UrgencyLevel::Normal));
+    patients.addPatient(Patient("Emma Davis", 35, "Seizures", UrgencyLevel::Urgent));
+    patients.addPatient(Patient("Jane Doe", 28, "Loss of consciousness", UrgencyLevel::Critical));
+    patients.addPatient(Patient("Noah Wilson", 41, "Animal or snake bites", UrgencyLevel::Normal));
 
-    Patient patient1("John Doe", 30, "Chest pain");
-    Patient patient2("Jane Smith", 45, "Sudden difficulty breathing");
-    Patient patient3("Robert Brown", 60, "Suspected fractures");
+    patients.sortPatients();
+    patients.writeToCSV("patients.csv");
 
-    hospital.addPatient(patient1);
-    hospital.addPatient(patient2);
-    hospital.addPatient(patient3);
-
-    patient1.saveToCSV(); // שמירה לקובץ patients.csv
-    patient2.saveToCSV();
-    patient3.saveToCSV();
-
-    hospital.displayAllPatients(); // הצגת כל המטופלים
-
-    EmergencyQueue::printWaitTimes(); // הדפסת זמני המתנה
+    patientDataHandler.printPatients(patients);
 
     return 0;
 }
