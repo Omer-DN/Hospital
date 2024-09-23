@@ -1,7 +1,8 @@
-// CSVWriter.cpp
 #include "CSVWriter.h"
 #include <fstream>
 #include <iostream>
+#include"Patient.h"
+#include"Patients.h"
 
 void CSVWriter::writePatientsToCSV(const std::vector<Patient>& patients, const std::string& filename) {
     std::ofstream csvFile(filename);
@@ -11,21 +12,32 @@ void CSVWriter::writePatientsToCSV(const std::vector<Patient>& patients, const s
     }
 
     // כתיבת כותרות לקובץ CSV
-    csvFile << "Patient ID,Name,Condition,Age,Urgency,Wait Time\n";
-
-    int waitTime = 0; // זמן ההמתנה ההתחלתי
+    csvFile << "Patient ID,Name,Condition,Age,Urgency\n";
 
     for (const Patient& patient : patients) {
         // כתיבת המידע לקובץ CSV
         csvFile << patient.getId() << ","
             << patient.getName() << ","
             << patient.getCondition() << ","
-            << patient.getAge() << ","
-            << static_cast<int>(patient.getUrgency()) << ","
-            << waitTime << "\n";
+            << patient.getAge() << ",";
 
-        // עדכון זמן ההמתנה
-        waitTime += 10; // או כל לוגיקה אחרת לקביעת זמן ההמתנה
+        // המרה של רמת הדחיפות למחרוזת
+        switch (patient.getUrgency()) {
+        case UrgencyLevel::Critical:
+            csvFile << "Critical";
+            break;
+        case UrgencyLevel::Urgent:
+            csvFile << "Urgent";
+            break;
+        case UrgencyLevel::Normal:
+            csvFile << "Normal";
+            break;
+        default:
+            csvFile << "Unknown";
+            break;
+        }
+
+        csvFile << "\n";
     }
 
     // סגירת הקובץ

@@ -1,10 +1,10 @@
-// CSVWriter.h
+#pragma once
 #ifndef CSVWRITER_H
 #define CSVWRITER_H
 
 #include <string>
 #include <vector>
-#include "Patient.h"
+#include "Patient.h"  // Include Patient class
 
 class CSVWriter {
 public:
