@@ -6,8 +6,10 @@ using namespace std;
 
 int Patient::idCounter = 0;
 
-Patient::Patient(const string& name, int age, string condition, UrgencyLevel::Level urgency) 
-    : name(name), age(age), condition(condition) ,urgency(urgency){
+Patient::Patient() : name(""), age(0), condition("") {}
+
+Patient::Patient(const string& name, int age, string condition)
+    : name(name), age(age), condition(condition) {
     id = ++idCounter;
 }
 
