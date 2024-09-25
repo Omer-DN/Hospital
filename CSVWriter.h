@@ -1,14 +1,12 @@
-#pragma once
 #ifndef CSVWRITER_H
 #define CSVWRITER_H
 
 #include <string>
-#include <vector>
-#include "Patient.h"  // Include Patient class
+#include "Patient.h"
 
 class CSVWriter {
 public:
-    void writePatientsToCSV(const std::vector<Patient>& patients, const std::string& filename);
+    void writeToFile(const Patient& patient, const string& filename);
 };
 
 #endif // CSVWRITER_H
