@@ -1,12 +1,14 @@
-#ifndef CSVWRITER_H
-#define CSVWRITER_H
+#include "CSVWriter.h"
+#include <fstream>
+#include <iostream>
 
-#include <string>
-#include "Patient.h"
-
-class CSVWriter {
-public:
-    void writeToFile(const Patient& patient, const string& filename);
-};
-
-#endif // CSVWRITER_H
+void CSVWriter::writeToFile(const Patient& patient, const string& filename) {
+    ofstream outputFile(filename, ios::app);
+    if (outputFile.is_open()) {
+        outputFile << patient.toCSV() << endl;
+        outputFile.close();
+    }
+    else {
+        cerr << "Error saving file.\n";
+    }
+}
