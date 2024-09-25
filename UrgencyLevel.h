@@ -1,26 +1,21 @@
 #pragma once
-#ifndef URGENCYLEVEL_H
-#define URGENCYLEVEL_H
 
-#include <string>
+using namespace std;
 
 class UrgencyLevel {
 public:
-    enum Level {
-        Critical = 1,
-        Urgent = 2,
-        Normal = 3
+    enum class Level {
+        Low,
+        Medium,
+        High
     };
 
-    // הוספת פונקציה להמרת רמת דחיפות למחרוזת
-    static std::string toString(Level level) {
+    static string toString(Level level) {
         switch (level) {
-        case Critical: return "Critical";
-        case Urgent: return "Urgent";
-        case Normal: return "Normal";
+        case Level::Low: return "Low";
+        case Level::Medium: return "Medium";
+        case Level::High: return "High";
         default: return "Unknown";
         }
     }
 };
-
-#endif // URGENCYLEVEL_H
