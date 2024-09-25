@@ -6,9 +6,9 @@
 class EmergencyQueue {
 public:
     static void initializeWaitTimes();
-    static int getWaitTime(const std::string& condition);
+    static int getWaitTime(const string& condition);
     static void printWaitTimes();
 
 private:
-    static std::unordered_map<std::string, int> conditionWaitTimes;
+    static unordered_map<string, int> conditionWaitTimes;
 };
