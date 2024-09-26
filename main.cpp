@@ -1,10 +1,6 @@
-#include "Patient.h"
 #include "Patients.h"
 #include "InjuryManager.h"
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
 #include "CSVWriter.h"
 
 using namespace std;
@@ -32,11 +28,10 @@ int main() {
 
     // Using the getInjuryList method to get the list of injuries
     vector<string> injuryList = injuryManager.getInjuryList();
-
     int choice;
     do {
         displayMenu();
-        cout << "Enter your choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         if (choice == 1) {
@@ -45,26 +40,26 @@ int main() {
             int injuryIndex;
 
             cin.ignore();
-            cout << "Enter patient name: ";
+            cout << "\nEnter patient name: ";
             getline(cin, name);
 
-            cout << "Enter patient age: ";
+            cout << "\nEnter patient age: ";
             cin >> age;
-
+            cout << endl;
             displayInjuries(injuryList);
-            cout << "Enter the number corresponding to the injury: ";
+            cout << "\nEnter the number corresponding to the injury: ";
             cin >> injuryIndex;
 
             if (injuryIndex < 1 || injuryIndex > injuryList.size()) {
                 cerr << "Invalid choice. Please try again.\n";
                 continue;
             }
-
+            cout << endl;
             string selectedInjury = injuryList[injuryIndex - 1];
 
             int urgency = injuryManager.getInjuryType(selectedInjury);
+            Patient newPatient(name, age, selectedInjury, urgency);// Updated constructor
 
-            Patient newPatient(name, age, selectedInjury); // Updated constructor
             patients.addPatient(newPatient); // Add the new patient to the list
 
             patients.sortPatients(); // Sort all patients by urgency
@@ -75,7 +70,7 @@ int main() {
         else if (choice == 2) {
             patients.printPatients(); // Display all patients
         }
-
+        cout << endl;
     } while (choice != 0);
 
     return 0;
