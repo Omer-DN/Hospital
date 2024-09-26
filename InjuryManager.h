@@ -13,7 +13,7 @@ private:
 public:
     InjuryManager();
 
-    int getWaitTime(const string& injury) const;
+    //int getWaitTime(const string& injury) const;
     int getInjuryType(const string& injury) const;
 
     // New method to return a list of all injuries

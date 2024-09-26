@@ -49,16 +49,6 @@ InjuryManager::InjuryManager() {
     caseType3 = { "Seizures", "Suspected fractures", "Persistent vomiting", "Severe mental health crisis", "Sudden swelling or pain in limbs" };
 }
 
-
-int InjuryManager::getWaitTime(const std::string& injury) const {
-    auto it = injuryWaitTimes.find(injury);
-    if (it != injuryWaitTimes.end()) {
-        return it->second;
-    }
-    return -1; 
-}
-
-
 int InjuryManager::getInjuryType(const std::string& injury) const {
     auto it = injuryTypes.find(injury);
     if (it != injuryTypes.end()) {
