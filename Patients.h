@@ -6,6 +6,7 @@
 
 class Patients {
 public:
+    //int urgency;
     void addPatient(const Patient& patient);
     void sortPatients();
     void printPatients() const;

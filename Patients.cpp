@@ -3,10 +3,10 @@
 #include <fstream>
 #include <algorithm>
 
+
 void Patients::addPatient(const Patient& patient) {
     patientList.push_back(patient);
 }
-
 
 void Patients::sortPatients() {
     sort(patientList.begin(), patientList.end(), [](const Patient& a, const Patient& b) {
@@ -14,15 +14,13 @@ void Patients::sortPatients() {
         });
 }
 
-
 void Patients::printPatients() const {
     for (const auto& patient : patientList) {
         cout << "Name: " << patient.getName()
             << ", Condition: " << patient.getCondition()
-            << ", Urgency: " << static_cast<int>(patient.getUrgency()) << std::endl;
+            << ", Urgency: " << patient.getUrgency() << endl;
     }
 }
-
 
 vector<Patient> Patients::getPatientList() const {
     return patientList;
