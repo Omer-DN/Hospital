@@ -1,21 +1,18 @@
 #include "Patient.h"
-#include "CSVWriter.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
 
 int Patient::idCounter = 0;
 
-Patient::Patient() : name(""), age(0), condition("") {}
-
-Patient::Patient(const string& name, int age, string condition)
-    : name(name), age(age), condition(condition) {
+Patient::Patient(const string& name, int age, const string condition, const int urgency)
+: name(name), age(age), condition(condition) ,urgency (urgency){
     id = ++idCounter;
-}
+    }
 
-UrgencyLevel::Level Patient::getUrgency() const {
+/*UrgencyLevel::Level Patient::getUrgency() const {
     return urgency;
-}
+}*/
 
 string Patient::getCondition() const {
     return condition;
@@ -26,7 +23,7 @@ string Patient::getName() const {
 }
 
 string Patient::toCSV() const {
-    return name + "," + std::to_string(age) + "," + condition + "," + UrgencyLevel::toString(urgency);
+        return name + "," + to_string(age) + "," + condition + "," + to_string(urgency);
 }
 
 int Patient::getAge() const {
@@ -37,8 +34,6 @@ int Patient::getId() const {
     return id;
 }
 
-void Patient::display() const {
-    cout << "Patient Name: " << name << endl;
-    cout << "Age: " << age << endl;
-    cout << "Condition: " << condition << "\n\n";
+int Patient::getUrgency()const {
+    return urgency;
 }

@@ -14,20 +14,17 @@ private:
     int id;
     static int idCounter;
     string condition;
-    UrgencyLevel::Level urgency;
+    int urgency;
 
 public:
 
-    Patient(const std::string& name, int age, string condition, UrgencyLevel::Level urgency);
-   
+    Patient(const string& name, int age, const string condition, const int urgency);
     string getName() const;
     int getAge() const;
     int getId() const;
     string getCondition() const;
-    void display() const;
     string toCSV() const;
-    void saveToCSV() const;
-    UrgencyLevel::Level getUrgency() const; 
+    int getUrgency() const;
 };
 
 #endif 
