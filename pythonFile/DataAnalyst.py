@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # הגדרת נתיב הקובץ
 csv_file_path = r'C:\Users\USER\source\repos\Hospital\Hospital\patients.csv'
-
+ 
 
 # קריאת קובץ ה-CSV ואיסוף גילאים
 def get_ages(csv_file_path):
