@@ -1,7 +1,7 @@
 import sqlite3
 import csv
 import os
-
+ 
 # חיבור למסד נתונים או יצירת מסד חדש
 conn = sqlite3.connect('hospital.db')
 cursor = conn.cursor()
